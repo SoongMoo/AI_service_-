@@ -10,6 +10,7 @@ windows 환경변수에 path에 경로를 추가해준다
 C:\Users\user\AppData\Local\Programs\ffmpeg\bin
 
 --------------------------------------------------------------------------------------------
+# 환경변수 설정을 안할 때 씀
 import os
 os.environ["PATH"] += os.pathsep + r"C:\Users\user\AppData\Local\Programs\ffmpeg\bin"
 --------------------------------------------------------------------------------------------
