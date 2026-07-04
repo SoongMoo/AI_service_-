@@ -61,3 +61,15 @@ system, prompt = get_few_shot_prompt(user_input)
 # response = client.chat.completions.create(...)
 # result = json.loads(response.choices[0].message.content) 
 
+
+
+
+
+
+
+
+
+
+
+
+### highland0@nate.com 이메일로 제출 해 주세요.
