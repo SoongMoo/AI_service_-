@@ -34,6 +34,7 @@ os.environ["PATH"] += os.pathsep + r"C:\Users\user\AppData\Local\Programs\ffmpeg
 2. PATH 확인
 import os
 print(os.environ["PATH"])
+
 ================================================================================
 
 
