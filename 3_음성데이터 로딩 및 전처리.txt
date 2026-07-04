@@ -1,0 +1,36 @@
+MP3 파일 내려받기: 
+[https://github.com/saintdragon2/gpt_agent_2025_easyspub/blob/main/chap05/audio/lsy_audio_2023_58s.mp3]
+
+
+FFMPEG 웹 사이트(https://www.gyan.dev/ffmpeg/builds/)에 접속합니다. 
+ffmpeg-git-full.7z를 클릭해 내려받고 원하는 위치에 압축을 풀고 원하는 위치에 복사합니다.
+
+
+FFMPEG 설치를 완료하면 새로운 셀을 만들어 다음과 같이 입력하고 실행합니다. 
+여기서 사용하는 경로는 자신의 컴퓨터에 설치된 FFMPEG 파일 경로를 입력합니다.
+windows 환경변수에 path에 경로를 추가해준다
+C:\Users\user\AppData\Local\Programs\ffmpeg\bin
+
+================================================================================
+# 윈도우 환경 변수가 아닌 명령어를 사용할 수 도 있습니다.
+import os
+os.environ["PATH"] += os.pathsep + r"C:\Users\user\AppData\Local\Programs\ffmpeg\bin"
+
+
+# 코랩
+1. apt로 설치
+!apt-get update -qq
+!apt-get install -y ffmpeg
+!ffmpeg -version
+
+2. PATH 확인
+import os
+print(os.environ["PATH"])
+
+3. PATH를 직접 추가
+import os
+os.environ["PATH"] += os.pathsep + "/content/ffmpeg/bin"
+================================================================================
+
+
+!pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu12
