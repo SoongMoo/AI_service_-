@@ -26,13 +26,14 @@ os.environ["PATH"] += os.pathsep + r"C:\Users\user\AppData\Local\Programs\ffmpeg
 !apt-get install -y ffmpeg
 !ffmpeg -version
 
+# 설치 확인 
+!ls -aln /usr/bin/ffmpef
+-------------------------
+-rwxr-xr-x 1 0 0 301544 May 19  2022 /usr/bin/ffmpeg
+
 2. PATH 확인
 import os
 print(os.environ["PATH"])
-
-3. PATH를 직접 추가
-import os
-os.environ["PATH"] += os.pathsep + "/content/ffmpeg/bin"
 ================================================================================
 
 
