@@ -24,7 +24,6 @@ os.environ["PATH"] += os.pathsep + r"C:\Users\user\AppData\Local\Programs\ffmpeg
 1. apt로 설치
 !apt-get update -qq
 !apt-get install -y ffmpeg
-!ffmpeg -version
 
 # 설치 확인 
 !ls -aln /usr/bin/ffmpef
@@ -35,6 +34,8 @@ os.environ["PATH"] += os.pathsep + r"C:\Users\user\AppData\Local\Programs\ffmpeg
 import os
 print(os.environ["PATH"])
 
+
+!ffmpeg -version
 ================================================================================
 
 
