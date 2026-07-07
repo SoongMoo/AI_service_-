@@ -23,6 +23,8 @@ print(response["message"]["content"])
 
 ## 리눅스에서 재미나이 사용하기
 1.
+!apt-get update
+!apt-get install -y zstd
 !curl -fsSL https://ollama.com/install.sh | sh
 2.
 !ollama --version
