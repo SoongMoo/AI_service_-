@@ -7,18 +7,15 @@
 >>> 안녕하세요.
 
 4. 주피터에서 실행해보자.
-!pip install ollama
+!pip install -q langchain-ollama
 
-
-from ollama import chat
-response = chat(
+from langchain_ollama import ChatOllama
+llm = ChatOllama(
     model="gemma3:4b",
-    messages=[
-        {"role":"user","content":"대한민국 수도는?"}
-    ]
+    temperature=0.7
 )
-
-print(response["message"]["content"])
+response = llm.invoke("대한민국 수도는?")
+print(response.content)
 
 
 ## 리눅스에서 재미나이 사용하기
