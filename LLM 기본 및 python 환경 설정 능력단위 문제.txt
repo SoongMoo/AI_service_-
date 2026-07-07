@@ -1,0 +1,65 @@
+두 문제를 퓨샷으로 프로그램을 짠 코드를 ipynb파일이나 text등으로 highland0@nate.com 이메일로 제출 해 주세요.
+
+
+1번 문제
+반도체 웨이퍼 검사 과정에서 발생하는 불량 유형을 판정하는 내장 규칙이 새로 제정되었습니다. 아래 예시(Few-shot)를 바탕으로, 새로운 입력 데이터의 불량 등급(A, B, F)을 정확히 분류하는 프롬프트를 작성하세요.
+규칙(학생들에게 직접 알려주지 않음): 크기가 5 이상이거나 밀도가 80 이상이면 F(Fail), 둘 다 낮으면 A(Pass)
+def classify_wafer_defect(defect_size, defect_density):
+[문제 제시] 퓨샷 데이터만으로 모델이 크기와 밀도의 임계값을 스스로 유추하게 만듭니다.
+few_shot_prompt = """
+Input: Size=1.2, Density=35
+Output: Grade A
+
+Input: Size=6.5, Density=20
+Output: Grade F
+
+Input: Size=2.0, Density=85
+Output: Grade F
+
+Input: Size=3.1, Density=78
+Output: Grade B
+
+Input: Size=0.5, Density=10
+Output: Grade A
+"""
+    
+target_input = f"\nInput: Size={defect_size}, Density={defect_density}\nOutput:"
+    return few_shot_prompt + target_input
+
+# 테스트 실행 (Size=5.8, Density=42 -> Grade F가 나와야 함)
+final_prompt = classify_wafer_defect(5.8, 42)
+
+
+
+2번 문제
+비정형 고객 리뷰 데이터에서 '감정(Positive/Negative)'과 '핵심 키워드'를 추출하여 지정된 JSON 구조로만 출력하도록 Few-Shot 프롬프트를 작성하고 코드로 검증하세요
+import json
+
+def get_few_shot_prompt(user_review):
+    # [문제 제시] 학생들은 이 부분의 퓨샷 프롬프트를 올바르게 설계해야 합니다.
+    system_message = (
+        "당신은 리뷰 분석기입니다. 주어진 예시와 동일한 JSON 형식으로만 응답하세요. "
+        "다른 부연 설명이나 마크다운(```json)은 절대 추가하지 마세요."
+    )
+    
+    few_shot_examples = """
+Review: "배송도 빠르고 제품 질도 정말 좋네요. 만족합니다!"
+Output: {"sentiment": "positive", "keywords": ["배송", "제품 질", "만족"]}
+
+Review: "가격에 비해 내구성이 너무 떨어집니다. 금방 고장 날 것 같아요."
+Output: {"sentiment": "negative", "keywords": ["가격", "내구성", "고장"]}
+
+Review: "그냥 그래요. 쓰는데 지장은 없는데 특별히 좋지도 않음."
+Output: {"sentiment": "neutral", "keywords": ["무난", "평범"]}
+"""
+    
+    full_prompt = f"{few_shot_examples}\nReview: \"{user_review}\"\nOutput:"
+    return system_message, full_prompt
+
+# 검증 테스트
+user_input = "디자인은 예쁜데 마감이 좀 아쉽고 소음이 심해요."
+system, prompt = get_few_shot_prompt(user_input)
+
+# (API 호출 및 결과 로드 예시)
+# response = client.chat.completions.create(...)
+# result = json.loads(response.choices[0].message.content) 
