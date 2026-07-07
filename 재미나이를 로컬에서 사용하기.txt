@@ -19,3 +19,31 @@ response = chat(
 )
 
 print(response["message"]["content"])
+
+
+## 리눅스에서 재미나이 사용하기
+1.
+!curl -fsSL https://ollama.com/install.sh | sh
+2.
+!ollama --version
+3.Ollama 서버 실행
+import subprocess
+import time
+subprocess.Popen(["ollama", "serve"])
+time.sleep(5)
+또는
+!nohup ollama serve >/dev/null 2>&1 &
+4. 모델 다운로드
+!ollama pull gemma3:4b
+5. Python 라이브러리 설치
+!pip install -q ollama
+6.LangChain에서 사용
+!pip install -q langchain-ollama
+
+from langchain_ollama import ChatOllama
+llm = ChatOllama(
+    model="gemma3:4b",
+    temperature=0.7
+)
+response = llm.invoke("대한민국 수도는?")
+print(response.content)
