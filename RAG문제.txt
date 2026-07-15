@@ -1,0 +1,45 @@
+%pip install youtube-search
+%pip install -U youtube-transcript-api
+%pip install pytube
+%pip install langchain_community
+
+
+from youtube_search import YoutubeSearch
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_community.document_loaders import YoutubeLoader
+from langchain_ollama import ChatOllama
+
+videos = YoutubeSearch("미국 대선", max_results=5).to_dict()
+for v in videos:
+    # url_suffix를 이용하여 video_url을 만듭니다.
+    v['video_url'] = 'http://youtube.com' + v['url_suffix']
+
+    # YoutubeLoader를 이용하여 비디오를 로드합니다.
+    loader = YoutubeLoader.from_youtube_url(  # "자막(Transcript) 데이터"를 텍스트
+        v['video_url'],
+        language=['ko', 'en']
+    )
+    v['content'] = loader.load()
+
+
+model = ChatOllama(
+    model="gemma3:4b",
+    temperature=0.7
+)
+
+prompt = ChatPromptTemplate.from_messages(
+    [("system", "다음 영상에 대한 요약을 한국어로 만들어줘 :\n\n{context}")]
+)
+
+chain = prompt | model | StrOutputParser()
+
+result = chain.invoke({"context": videos[0]['content']})]
+print(result)
+
+
+위 코드는 Long Context Prompt방식이다. 위 코드를 RAG파이프라인 방식으로 변경하고 ipynb파일이나, py파일로 
+highland0@nate.com 으로 과제를 보내시오.
+
+
