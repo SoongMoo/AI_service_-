@@ -41,12 +41,12 @@ print(result)
 
 위 코드는 Long Context Prompt방식으로 되어 있다. 
 해당 코드를 RAG파이프라인 방식으로 변경하는데 있어 post-retriver의 10가지 중 제일 많이 사용되고 있는 FlashRankRerank, RedundantFilter, Document Compressor, Document Transformer4가지 방식도 같이 적용하여 
-ipynb, py, txt로 되어 있는 파일을 highland0@nate.com 으로 보세오.
-단, content를 만들 때 하나로 합쳐서 만들어야 하며 꼭 chain을 사용할 수 있도록 한다. 감점 대상
+ipynb, py, txt로 되어 있는 파일을 highland0@nate.com 으로 보내주세오.
+단, content를 만들 때 하나로 합쳐야 하며 꼭 chain을 사용할 수 있도록 한다. (감점 대상)
 
-임베딩을 허깅체이스임베딩 모델을 사용하면됩니다. 
-팔요한 패키지는 아래와 같다.
+임베딩은 허깅체이스임베딩 모델을 사용하면됩니다. 
 
+팔요한 패키지들은 아래와 같다.
 %pip install youtube-search
 %pip install -U youtube-transcript-api
 %pip install pytube
