@@ -35,11 +35,17 @@ prompt = ChatPromptTemplate.from_messages(
 
 chain = prompt | model | StrOutputParser()
 
-result = chain.invoke({"context": videos[0]['content']})]
+result = chain.invoke({"context": videos[0]['content']})
 print(result)
 
 
-위 코드는 Long Context Prompt방식이다. 위 코드를 RAG파이프라인 방식으로 변경하고 ipynb파일이나, py파일로 
-highland0@nate.com 으로 과제를 보내시오.
-
+위 코드는 Long Context Prompt방식으로 되어 있다. 해당 코드를 RAG파이프라인 방식으로 변경하고 post-retriver의 3가지 방식도 같이 적용하여 ipynb파일이나, py, txt로 되어 있는 파일을 
+highland0@nate.com 으로 보세오. 단, content를 만들 때 하나로 합쳐서 만들지 않은 경우 감점 처리 됩니다.
+임베딩을 허깅체이스임베딩 모델을 사용하면됩니다. 
+허깅페이스임베딩을 사용하려면
+%pip install -U \
+langchain-huggingface \
+sentence-transformers \
+transformers \
+torch
 
