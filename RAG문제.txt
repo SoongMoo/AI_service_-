@@ -47,11 +47,22 @@ ipynb, py, txt로 되어 있는 파일을 highland0@nate.com 으로 보내주세
 임베딩은 허깅체이스임베딩 모델을 사용하면됩니다. 
 
 팔요한 패키지들은 아래와 같다.
-%pip install youtube-search
-%pip install -U youtube-transcript-api
-%pip install pytube
-%pip install langchain_community
-%pip install -U langchain-huggingface sentence-transformers transformers torch
-%pip install  chromadb
-%pip install  langchain-chroma
+# YouTube
+%pip install -U youtube-search youtube-transcript-api pytube
 
+# LangChain
+%pip install -U langchain
+%pip install -U langchain-core
+%pip install -U langchain-community
+%pip install -U langchain-text-splitters
+%pip install -U langchain-huggingface
+%pip install -U langchain-chroma
+
+# Embedding
+%pip install -U sentence-transformers
+
+# Vector DB
+%pip install -U chromadb
+
+# Reranker
+%pip install -U flashrank
